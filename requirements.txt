@@ -1,0 +1,10 @@
+flask
+datetime
+pandas
+numpy
+sklearn
+scipy
+matplotlib
+requests
+datetime
+json
