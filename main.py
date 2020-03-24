@@ -68,11 +68,13 @@ def predict():
     for aa in casebyday.json()['data']:
     #    x.append(aa['harike'])
         y.append(aa['jumlahKasusKumulatif'])
+    y.pop()
     x = []
     i = 0
     for aaa in y:
         x.append(i)
         i+=1
+
     fit = curve_fit(logistic_model,x,y,p0=[2,100,1000])
     A,B=fit
     errors = [np.sqrt(fit[1][i][i]) for i in [0,1,2]]
@@ -93,4 +95,4 @@ def predict():
     return jsonify(outputs)
 
 if __name__ == '__main__':
-    app.run(port="5002",debug=True)
+    app.run(port="5002",host="0.0.0.0",debug=True)
